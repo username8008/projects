@@ -1,3 +1,7 @@
+
+
+
+
 # ESP32 Optical Data Transmission System
 
 A working **proof-of-concept prototype** for optical data communication, built with **two ESP32 boards**, LEDs, photoresistors (LDRs), **ESP-IDF (C)**, **FreeRTOS**, and a **C# WinForms** desktop application. The current version focuses on reliable short-text transmission; the longer-term goal is to develop a faster optical link capable of transferring images.
@@ -9,7 +13,7 @@ The application sends text over TCP/IP to a transmitter ESP32. The transmitter e
 ## Demo
 
 
-🎥 **Video demonstration:** Coming soon.
+https://github.com/user-attachments/assets/fce33991-2ad7-415d-bc1e-80373764af5c
 
 
 
@@ -84,54 +88,14 @@ This prototype uses an optical data channel in one direction and an optical read
 
 ```text
 opticFiberEsp/
-├── ver1.0/                         # Earlier Arduino-based prototype
-├── ver2.0/
+├── esp32_code/
 │   ├── transmitter/ESP_IDF_PROJ/   # ESP-IDF transmitter firmware
-│   └── reciver/ESP_IDF_PROJ/       # ESP-IDF receiver firmware
+│   ├── reciver/ESP_IDF_PROJ/       # ESP-IDF receiver firmware
 ├── front for transmitter/
 │   └── msgSender/                 # C# WinForms TCP client (.NET Framework 4.7.2)
 └── README.md
 ```
 
-*Folder spelling (`reciver`) is preserved to match the current repository.*
-
-## Building and running
-
-### 1. ESP32 firmware
-
-Install ESP-IDF and set up its environment. From each ESP-IDF project directory, build and flash the firmware for your particular ESP32 target and serial port:
-
-```bash
-idf.py set-target esp32
-idf.py build
-idf.py -p YOUR_SERIAL_PORT flash monitor
-```
-
-The transmitter also uses Espressif's `protocol_examples_common` helper for network setup. Ensure the matching ESP-IDF examples/common component is available in your build environment.
-
-### 2. Configure Wi-Fi (transmitter)
-
-Run inside `ver2.0/transmitter/ESP_IDF_PROJ/`:
-
-```bash
-idf.py menuconfig
-```
-
-Find the example network configuration (the values correspond to `CONFIG_EXAMPLE_WIFI_SSID` and `CONFIG_EXAMPLE_WIFI_PASSWORD`) and enter your own network name and password.
-
-**Do not commit `sdkconfig`, `sdkconfig.old`, or any file containing your Wi-Fi credentials.** These files are ignored by the repository's `.gitignore`.
-
-### 3. Desktop client
-
-Open `front for transmitter/msgSender/msgSender.slnx` in a compatible Visual Studio version, or open the `.csproj` directly. The project targets **.NET Framework 4.7.2** and uses Windows Forms.
-
-1. Connect the transmitter ESP32 to the Wi-Fi network.
-2. Find its IP address from the ESP-IDF serial monitor or your router.
-3. Open the desktop client, enter the ESP32 IP address, and confirm it.
-4. Enter a message and send it.
-5. Observe the receiver's decoded output in its serial monitor.
-
-Use short ASCII messages for predictable results: the current firmware processes individual bytes and has a limited receiver buffer.
 
 ## Current limitations
 
@@ -156,7 +120,3 @@ The current LED-and-LDR design demonstrates the basic communication protocol and
 ## Technologies
 
 **C · ESP-IDF · FreeRTOS · ESP32 · GPIO · ADC · TCP/IP · C# · Windows Forms · CRC-8**
-
-## License
-
-No license has been selected yet. Add a `LICENSE` file if you want to define reuse permissions.
