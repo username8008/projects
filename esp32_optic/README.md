@@ -13,7 +13,11 @@ The application sends text over TCP/IP to a transmitter ESP32. The transmitter e
 ## Demo
 
 
-https://github.com/user-attachments/assets/fce33991-2ad7-415d-bc1e-80373764af5c
+
+
+https://github.com/user-attachments/assets/8a86546b-f5d6-4abd-b2bb-f5d0ac8eb425
+
+
 
 
 
